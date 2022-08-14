@@ -1,6 +1,8 @@
 <Button>:
     size_hint :(0.2,0.5) 
 
+<Label>:
+    font_size : "24sp"
 
 <MainWindow>:
 
@@ -22,16 +24,20 @@
             orientation : "horizontal"
             size_hint : (0.6,0.2) 
             pos_hint: {"x":0.2, "y":0.1}
-            Button:
+            Label:
+                id: label1
                 text: "1"
             
-            Button:
+            Label:
+                id: label2
                 text: "2"
 
-            Button:
+            Label:
+                id: label3
                 text: "3"
 
-            Button:
+            Label:
+                id: label4
                 text: "4"
 
         
@@ -51,4 +57,10 @@
             pos_hint: {"top":0.9, "right":0.9}
             id: reset
             text: "Reset"  
-            on_press: root.reset_timer()                         
+            on_press: root.complete_reset()
+
+        Label:
+            id: process
+            pos_hint: {"x":0.3, "y":0.45}
+            size_hint: (0.4,0.1)
+            text: "WORK"                         
