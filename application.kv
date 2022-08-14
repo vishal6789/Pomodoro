@@ -1,5 +1,5 @@
 <Button>:
-    size_hint :(0.4,0.4) 
+    size_hint :(0.2,0.5) 
 
 
 <MainWindow>:
@@ -12,6 +12,7 @@
         size: self.parent.size
         
         Label:
+            
             id: DispTime
             size_hint: (0.4,0.4)
             pos_hint: {"x":0.3, "y":0.4}
@@ -19,14 +20,35 @@
 
         BoxLayout:
             orientation : "horizontal"
-            size_hint : (0.4,0.2) 
-            pos_hint: {"x":0.3, "y":0.1}
+            size_hint : (0.6,0.2) 
+            pos_hint: {"x":0.2, "y":0.1}
             Button:
-                id: PlayPause
-                text: "Start" 
-                on_press: root.play_pause()
+                text: "1"
             
             Button:
-                id: reset
-                text: "Reset"  
-                on_press: root.reset_timer()                         
+                text: "2"
+
+            Button:
+                text: "3"
+
+            Button:
+                text: "4"
+
+        
+#        BoxLayout:
+#            orientation : "vertical"
+#            size_hint : (0.1,0.2) 
+#            pos_hint: {"top":0.9, "right":0.9}
+        Button:
+            pos_hint: {"top":0.9, "x":0.1}  
+            size_hint : (0.1,0.1) 
+            id: PlayPause
+            text: "Start" 
+            on_press: root.play_pause()
+        
+        Button:
+            size_hint : (0.1,0.1) 
+            pos_hint: {"top":0.9, "right":0.9}
+            id: reset
+            text: "Reset"  
+            on_press: root.reset_timer()                         
