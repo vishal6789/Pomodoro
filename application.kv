@@ -1,10 +1,13 @@
 <Button>:
-    size_hint :(0.3,0.3) 
+    size_hint :(0.4,0.4) 
 
 
 <MainWindow>:
-    
-    
+
+    #PlayPause: PlayPause
+    #DispTime: DispTime
+    #Reset: reset
+
     FloatLayout:
         size: self.parent.size
         
@@ -12,20 +15,18 @@
             id: DispTime
             size_hint: (0.4,0.4)
             pos_hint: {"x":0.3, "y":0.4}
-            text: "00:00"
+            text: "00:10"
 
         BoxLayout:
             orientation : "horizontal"
             size_hint : (0.4,0.2) 
             pos_hint: {"x":0.3, "y":0.1}
             Button:
-                id: play
-                text: "play" 
-
-            Button:
-                id: pause
-                text: "Pause"
-
+                id: PlayPause
+                text: "Start" 
+                on_press: root.play_pause()
+            
             Button:
                 id: reset
-                text: "Start"                           
+                text: "Reset"  
+                on_press: root.reset_timer()                         
