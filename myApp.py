@@ -80,12 +80,11 @@ class MainWindow(Widget):
     def update_Disp(self):
         mins,secs = self.TimerTime//60,self.TimerTime%60
         self.ids.DispTime.font_size = '40sp'
-        self.ids.DispTime.text = (str(+int(mins))+':'+str(int(secs))+':'+str(int(secs* 100 % 100)))
+        self.ids.DispTime.text = ("{0:02d}".format(int(mins))+':'+"{0:02d}".format(int(secs))+':'+"{0:02d}".format(int(secs* 100 % 100)))
         self.ids.PlayPause.text = self.prompt
         work = "WORK" if self.IsWork else "BREAK"
         self.ids.process.text = work
         self.angle_cal()
-
 
     def update_count(self):
         if self.IsWork:
@@ -94,16 +93,20 @@ class MainWindow(Widget):
             self.BreakCount += 1
 
             if self.BreakCount==1:
-                self.ids.label1.color = 0,1,1,1
-
+                self.ids.label1.color = 0,0,1,1
+                self.ids.DispGraph.ringcolor = (0,0,1,1)
+                
             elif self.BreakCount==2:
-                self.ids.label2.color = 0,1,1,1
+                self.ids.DispGraph.ringcolor = (0,0,1,1)
+                self.ids.label2.color = 0,0,1,1
             
             elif self.BreakCount==3:
-                self.ids.label3.color = 0,1,1,1
+                self.ids.DispGraph.ringcolor = (0,0,1,1)
+                self.ids.label3.color =0,0,1,1
             
             elif self.BreakCount==4:
-                self.ids.label4.color = 0,1,1,1
+                self.ids.DispGraph.ringcolor = (0,0,1,1)
+                self.ids.label4.color = 0,0,1,1
 
 
             if self.BreakCount%4==0:
@@ -116,7 +119,8 @@ class MainWindow(Widget):
             if self.WorkCount==5:
                 self.complete_reset()
             else:
-                self.TimerTime = self.TimerComplete = 1500 #25 min work  
+                self.TimerTime = self.TimerComplete = 1500 #25 min work 
+                self.ids.DispGraph.ringcolor = (0,1,1,1) 
         print("Work:",self.WorkCount,"break",self.BreakCount)
         self.play_pause()
         self.update_Disp()
@@ -133,6 +137,7 @@ class MainWindow(Widget):
         self.ids.label2.color = 1,1,1,1
         self.ids.label3.color = 1,1,1,1
         self.ids.label4.color = 1,1,1,1
+        self.ids.DispGraph.ringcolor = (0,1,1,1)
         Clock.unschedule(self.timer_count)
         Clock.schedule_interval(self.timer_count,0)
         self.update_Disp()

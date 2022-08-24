@@ -1,4 +1,5 @@
 <Button>:
+    background_color: 0, 0, 0, 0
     size_hint :(0.2,0.5) 
 
 <Label>:
@@ -16,13 +17,14 @@
             size_hint: (0.4,0.4)
             pos_hint: {"x":0.3, "y":0.3}
 
-            progress:0
+            progress: 0
+            ringcolor : (0,1,1,1)
         
             
             canvas:
                 
                 Color:
-                    rgba: 0,1,1,1
+                    rgba: self.ringcolor
                     
 
                 #Rectangle:
