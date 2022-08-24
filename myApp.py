@@ -34,7 +34,9 @@ class MainWindow(Widget):
     #defining required variables 
     TimerStarted = False
     TimerTime = 5 # 25mins
+    TimerComplete = 5
     prompt = "Start"
+    # Angle = 0
     IsWork = True
     WorkCount = 1
     BreakCount = 0 
@@ -82,6 +84,7 @@ class MainWindow(Widget):
         self.ids.PlayPause.text = self.prompt
         work = "WORK" if self.IsWork else "BREAK"
         self.ids.process.text = work
+        self.angle_cal()
 
 
     def update_count(self):
@@ -104,23 +107,23 @@ class MainWindow(Widget):
 
 
             if self.BreakCount%4==0:
-                self.TimerTime = 8 #20 min long break
+                self.TimerTime = self.TimerComplete = 8 #20 min long break
             else:
-                self.TimerTime = 3 # 5 min short break
+                self.TimerTime = self.TimerComplete = 3 # 5 min short break
 
         else:
             self.IsWork = True
             if self.WorkCount==5:
                 self.complete_reset()
             else:
-                self.TimerTime = 5 #25 min work  
+                self.TimerTime = self.TimerComplete = 5 #25 min work  
         print("Work:",self.WorkCount,"break",self.BreakCount)
         self.play_pause()
         self.update_Disp()
     
     def complete_reset(self):
-        self.TimerStarted = bool(1-int(self.TimerStarted))
-        self.TimerTime = 5 # 25mins
+        self.TimerStarted = False
+        self.TimerTime = self.TimerComplete = 5 # 25mins
         self.prompt = "Start"
         self.IsWork = True
         self.WorkCount = 1
@@ -130,15 +133,15 @@ class MainWindow(Widget):
         self.ids.label2.color = 1,1,1,1
         self.ids.label3.color = 1,1,1,1
         self.ids.label4.color = 1,1,1,1
-
-
-
-
         Clock.unschedule(self.timer_count)
         Clock.schedule_interval(self.timer_count,0)
         self.update_Disp()
 
-
+    def angle_cal(self):
+        angle  = (self.TimerTime/self.TimerComplete * 180) - 90
+        self.ids.DispGraph.progress = int(angle)
+    
+    
     pass
 
 

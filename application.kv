@@ -6,12 +6,37 @@
 
 <MainWindow>:
 
-    #PlayPause: PlayPause
-    #DispTime: DispTime
-    #Reset: reset
-
     FloatLayout:
         size: self.parent.size
+        
+        
+        BoxLayout:
+            id: DispGraph
+            orientation : "horizontal"
+            size_hint: (0.4,0.4)
+            pos_hint: {"x":0.3, "y":0.3}
+
+            progress:0
+        
+            
+            canvas:
+                
+                Color:
+                    rgba: 0,1,1,1
+                    
+
+                #Rectangle:
+                #    pos: self.pos
+                #    size: self.size
+
+                
+                Ellipse:
+                    id : sap
+                    pos: (root.x + root.width - min(self.size)-50)/2,(root.y + root.height - min(self.size)-50)/2
+                    size: min(self.size)+50,min(self.size)+50
+                    source: 'progressring1.png' 
+                    angle_start: -90
+                    angle_end: self.progress
         
         Label:
             
@@ -40,11 +65,7 @@
                 id: label4
                 text: "4"
 
-        
-#        BoxLayout:
-#            orientation : "vertical"
-#            size_hint : (0.1,0.2) 
-#            pos_hint: {"top":0.9, "right":0.9}
+
         Button:
             pos_hint: {"top":0.9, "x":0.1}  
             size_hint : (0.1,0.1) 
