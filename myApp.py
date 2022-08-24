@@ -33,8 +33,8 @@ class MainWindow(Widget):
 
     #defining required variables 
     TimerStarted = False
-    TimerTime = 5 # 25mins
-    TimerComplete = 5
+    TimerTime = 1500 # 25mins
+    TimerComplete = 1500
     prompt = "Start"
     # Angle = 0
     IsWork = True
@@ -107,23 +107,23 @@ class MainWindow(Widget):
 
 
             if self.BreakCount%4==0:
-                self.TimerTime = self.TimerComplete = 8 #20 min long break
+                self.TimerTime = self.TimerComplete = 1200 #20 min long break
             else:
-                self.TimerTime = self.TimerComplete = 3 # 5 min short break
+                self.TimerTime = self.TimerComplete = 300 # 5 min short break
 
         else:
             self.IsWork = True
             if self.WorkCount==5:
                 self.complete_reset()
             else:
-                self.TimerTime = self.TimerComplete = 5 #25 min work  
+                self.TimerTime = self.TimerComplete = 1500 #25 min work  
         print("Work:",self.WorkCount,"break",self.BreakCount)
         self.play_pause()
         self.update_Disp()
     
     def complete_reset(self):
         self.TimerStarted = False
-        self.TimerTime = self.TimerComplete = 5 # 25mins
+        self.TimerTime = self.TimerComplete = 1500 # 25mins
         self.prompt = "Start"
         self.IsWork = True
         self.WorkCount = 1
