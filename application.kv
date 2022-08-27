@@ -44,7 +44,7 @@
             
             id: DispTime
             size_hint: (0.4,0.4)
-            font_size : min(40,self.width/6)
+            font_size : min(40,self.width/6,self.height/4.2)
             pos_hint: {"x":0.3, "y":0.4} if self.width>240  else {"x":0.3, "y":0.375}
             text: "00:10"
 
@@ -87,4 +87,5 @@
             id: process
             pos_hint: {"x":0.3, "y":0.45}
             size_hint: (0.4,0.1)
+            font_size : min(24,self.width/6,self.height)
             text: "WORK"                         
