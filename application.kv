@@ -44,7 +44,8 @@
             
             id: DispTime
             size_hint: (0.4,0.4)
-            pos_hint: {"x":0.3, "y":0.4}
+            font_size : min(40,self.width/6)
+            pos_hint: {"x":0.3, "y":0.4} if self.width>240  else {"x":0.3, "y":0.375}
             text: "00:10"
 
         BoxLayout:

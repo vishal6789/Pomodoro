@@ -79,7 +79,6 @@ class MainWindow(Widget):
 
     def update_Disp(self):
         mins,secs = self.TimerTime//60,self.TimerTime%60
-        self.ids.DispTime.font_size = '40sp'
         self.ids.DispTime.text = ("{0:02d}".format(int(mins))+':'+"{0:02d}".format(int(secs))+':'+"{0:02d}".format(int(secs* 100 % 100)))
         self.ids.PlayPause.text = self.prompt
         work = "WORK" if self.IsWork else "BREAK"
